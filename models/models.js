@@ -13,11 +13,11 @@ export const User = sequelize.define('user', {
   },
   password: {
     type: DataTypes.STRING,
-    unique: true
+    unique: false
   },
   role: {
     type: DataTypes.STRING,
-    defaultValue: 'USER'
+    defaultValue: 'USER',
   }
 });
 
@@ -145,7 +145,7 @@ Rating.belongsTo(Device);
 Device.hasMany(BasketDevice);
 BasketDevice.belongsTo(Device);
 
-Device.hasMany(DeviceInfo);
+Device.hasMany(DeviceInfo, { as: 'info' }); //info это название массива характеристик
 DeviceInfo.belongsTo(Device);
 
 Type.belongsToMany(Brand, { through: TypeBrand });

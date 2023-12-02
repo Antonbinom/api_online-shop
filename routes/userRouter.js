@@ -1,9 +1,10 @@
 import express from 'express';
-import { userRegistration, userLogin, userAuth } from '../controllers/userController.js';
+import { registration, login, auth } from '../controllers/userController.js';
+import authMiddleware from '../middleware/authMiddleware.js'; //
 const router = express.Router();
 
-router.post('/registration', userRegistration);
-router.post('/login', userLogin);
-router.get('/auth', userAuth);
+router.post('/registration', registration);
+router.post('/login', login);
+router.get('/auth', authMiddleware, auth); //Передаем вторым параметром middleware проверки авторизации
 
 export default router;

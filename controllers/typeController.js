@@ -19,3 +19,5 @@ export async function getAll(req, res) {
     next(ApiError.badRequest(error.message));
   }
 };
+
+//TODO: put, delete

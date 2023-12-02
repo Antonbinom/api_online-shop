@@ -15,16 +15,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-console.log(createPath());
-app.use(express.static(createPath()));
-console.log(createPath());
+app.use(express.static(createPath())); //указаи папку со статичными файлами
 app.use(fileUpload({}));
-app.use('/api', router);
+app.use('/api', router); //подключили роутер
 app.use(errorHandler); //middleware с ошибкой регестрируем в самом конце
-
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Hello!' })
-})
 
 async function start() {
   try {
